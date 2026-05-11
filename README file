@@ -1,0 +1,322 @@
+# Online Book Store – Laravel Project
+
+## Project Overview
+
+This project is a simple **Online Book Store** web application developed using Laravel.
+
+The system allows users to:
+
+* View books
+* Search books
+* View book details
+* Manage books through admin dashboard
+* Integrate external API data
+
+The project follows proper MVC architecture using Laravel Blade Templates and MySQL database.
+
+---
+
+# Technologies Used
+
+* Laravel 11
+* PHP 8+
+* MySQL
+* Bootstrap 5
+* Blade Templates
+* Google Books REST API
+
+---
+
+# Features
+
+## User Features
+
+* Home page
+* Book listing page
+* Book details page
+* Search books
+* Responsive UI
+
+## Admin Features
+
+* Admin login
+* Add books
+* Edit books
+* Delete books
+* Manage availability
+* Manage pricing
+
+## API Integration
+
+* Google Books API integration
+* Display external book data
+
+---
+
+# MVC Architecture
+
+```text
+User Request
+     ↓
+Routes
+     ↓
+Controller
+     ↓
+Model
+     ↓
+Database
+     ↓
+Blade View
+```
+
+---
+
+# Database Schema
+
+## Tables
+
+### books
+
+* id
+
+* title
+
+* author
+
+* price
+
+* description
+
+* availability
+
+* image
+
+* created_at
+
+* updated_at
+
+### categories
+
+* id
+* name
+* created_at
+* updated_at
+
+### users
+
+* id
+* name
+* email
+* password
+* role
+* created_at
+* updated_at
+
+---
+
+# Installation Steps
+
+## 1. Clone Project
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+---
+
+## 2. Open Project Folder
+
+```bash
+cd bookstore
+```
+
+---
+
+## 3. Install Dependencies
+
+```bash
+composer install
+```
+
+---
+
+## 4. Create Environment File
+
+```bash
+cp .env.example .env
+```
+
+---
+
+## 5. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+---
+
+# Database Setup
+
+## Create Database
+
+Open MySQL and create database:
+
+```sql
+CREATE DATABASE bookstore;
+```
+
+---
+
+## Configure .env File
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=bookstore
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+---
+
+## Run Migration
+
+```bash
+php artisan migrate
+```
+
+---
+
+# Run Laravel Project
+
+```bash
+php artisan serve
+```
+
+Open browser:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+# API Integration
+
+This project uses Google Books API.
+
+Example API:
+
+```text
+https://www.googleapis.com/books/v1/volumes?q=laravel
+```
+
+Laravel API Call Example:
+
+```php
+use Illuminate\Support\Facades\Http;
+
+$response = Http::get(
+    'https://www.googleapis.com/books/v1/volumes?q=laravel'
+);
+
+$data = $response->json();
+```
+# Example weather API:
+You can also integrate weather data on homepage.
+
+Current weather for Erode:
+
+ Example API:
+
+ ```text
+ https://openweathermap.org/api
+```
+![alt text](image.png)
+---
+
+# Laravel Commands Used
+
+## Create Model + Migration + Controller
+
+```bash
+php artisan make:model Book -mcr
+```
+
+## Run Migration
+
+```bash
+php artisan migrate
+```
+
+## Start Server
+
+```bash
+php artisan serve
+```
+
+---
+
+# Routes Example
+
+```php
+Route::get('/', [HomeController::class, 'index']);
+
+Route::resource('books', BookController::class);
+```
+
+---
+
+# CRUD Operations
+
+| Operation | Method |
+| --------- | ------ |
+| Create    | POST   |
+| Read      | GET    |
+| Update    | PUT    |
+| Delete    | DELETE |
+
+---
+
+# Screens Included
+
+* Home Page
+* Book Listing Page
+* Book Details Page
+* Admin Dashboard
+* Add Book Page
+* Edit Book Page
+
+---
+
+# Future Improvements
+
+* Authentication
+* Image Upload
+* Pagination
+* Category Filters
+* User Registration
+* Order Management
+* Payment Integration
+
+---
+
+# Author
+
+Chandru
+
+---
+
+# Conclusion
+
+This Laravel Online Book Store project demonstrates:
+
+* Laravel MVC Architecture
+* Blade Template Usage
+* CRUD Operations
+* MySQL Database Design
+* REST API Integration
+* Responsive UI Design
+* Clean Code Structure

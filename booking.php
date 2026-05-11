@@ -1,0 +1,85 @@
+
+
+<h2 class="mb-4">
+    All Books
+</h2>
+
+<form method="GET"
+      action="/books"
+      class="mb-4">
+
+    <div class="row">
+
+        <div class="col-md-10">
+
+            <input type="text"
+                   name="search"
+                   class="form-control"
+                   placeholder="Search Books">
+
+        </div>
+
+        <div class="col-md-2">
+
+            <button class="btn btn-primary w-100">
+                Search
+            </button>
+
+        </div>
+
+    </div>
+
+</form>
+
+<div class="row">
+
+@foreach($books as $book)
+
+<div class="col-md-4">
+
+    <div class="card mb-4">
+
+        <div class="card-body">
+
+            <h4>{{ $book->title }}</h4>
+
+            <p>{{ $book->author }}</p>
+
+            <p>
+                ₹{{ $book->price }}
+            </p>
+
+            <p>
+
+                @if($book->availability)
+
+                    <span class="badge bg-success">
+                        Available
+                    </span>
+
+                @else
+
+                    <span class="badge bg-danger">
+                        Out of Stock
+                    </span>
+
+                @endif
+
+            </p>
+
+            <a href="/books/{{ $book->id }}"
+               class="btn btn-dark">
+               View Details
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+@endforeach
+
+</div>
+
+@endsection

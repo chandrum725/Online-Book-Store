@@ -1,0 +1,60 @@
+@extends('layouts.app')
+
+@section('content')
+
+<div class="row">
+
+    <div class="col-md-5">
+
+        <img src="https://picsum.photos/500/600"
+             class="img-fluid rounded shadow">
+
+    </div>
+
+    <div class="col-md-7">
+
+        <h1 class="fw-bold">
+            {{ $book->title }}
+        </h1>
+
+        <h4 class="text-muted">
+            By {{ $book->author }}
+        </h4>
+
+        <hr>
+
+        <h3 class="text-success">
+            ₹ {{ $book->price }}
+        </h3>
+
+        <p>
+            <strong>Availability:</strong>
+
+            @if($book->stock > 0)
+
+                <span class="text-success">
+                    In Stock
+                </span>
+
+            @else
+
+                <span class="text-danger">
+                    Out of Stock
+                </span>
+
+            @endif
+        </p>
+
+        <p class="mt-4">
+            {{ $book->description }}
+        </p>
+
+        <button class="btn btn-primary btn-lg">
+            Buy Now
+        </button>
+
+    </div>
+
+</div>
+
+@endsection

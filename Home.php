@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Book Store</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body{
+            background:#f5f5f5;
+        }
+
+        .navbar{
+            background:#212529;
+        }
+
+        .navbar-brand{
+            color:white !important;
+            font-weight:bold;
+            font-size:24px;
+        }
+
+        .book-card{
+            transition:0.3s;
+        }
+
+        .book-card:hover{
+            transform:translateY(-5px);
+            box-shadow:0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .footer{
+            background:#212529;
+            color:white;
+            padding:15px;
+            margin-top:50px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+
+        <a class="navbar-brand" href="/">
+            Online Book Store
+        </a>
+
+        <div>
+            <a href="/" class="btn btn-light btn-sm">Home</a>
+
+            <a href="/books" class="btn btn-warning btn-sm">
+                Books
+            </a>
+
+            <a href="/admin/login" class="btn btn-success btn-sm">
+                Admin
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    @yield('content')
+
+</div>
+
+<div class="footer">
+    © 2026 Online Book Store
+</div>
+
+</body>
+</html>
