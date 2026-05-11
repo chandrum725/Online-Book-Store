@@ -119,7 +119,7 @@ Blade View
 ## 1. Clone Project
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+https://github.com/MChandru07/Online-Book-Store.git
 ```
 
 ---
@@ -299,13 +299,6 @@ Route::resource('books', BookController::class);
 * User Registration
 * Order Management
 * Payment Integration
-
----
-
-# Author
-
-Chandru
-
 ---
 
 # Conclusion
