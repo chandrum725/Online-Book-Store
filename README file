@@ -227,14 +227,14 @@ $data = $response->json();
 # Example weather API:
 You can also integrate weather data on homepage.
 
-Current weather for Erode:
+Current weather :
 
  Example API:
 
  ```text
  https://openweathermap.org/api
 ```
-![alt text](image.png)
+https://www.shutterstock.com/image-vector/weather-icon-set-forecast-flat-260nw-2548130559.jpg
 ---
 
 # Laravel Commands Used
