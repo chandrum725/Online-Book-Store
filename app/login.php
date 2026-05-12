@@ -1,57 +1,118 @@
-@extends('layouts.app')
+<?php
+  if( isset($_COOKIE['userid']) && isset($_COOKIE['password'])){
 
-@section('content')
+    header("location:index.php");
+    exit;
+  }
 
-<div class="row justify-content-center">
+  else{
 
-    <div class="col-md-5">
+    if(isset($_POST['submit'])){
 
-        <div class="card shadow">
+      $conn = mysqli_connect("localhost","root","","book_store");
 
-            <div class="card-header bg-dark text-white text-center">
+      $userid = $_POST['userinput'];
+      $password = $_POST['password'];
 
-                <h3>Admin Login</h3>
+      if($conn){
+        $sql = "SELECT * FROM users";
+        $result = mysqli_query($conn,$sql);
 
-            </div>
+        $flag1 = FALSE;
+        $flag2 = FALSE;
 
-            <div class="card-body">
+        while($row = mysqli_fetch_assoc($result)){
 
-                <form method="POST" action="/admin/login">
+          if(($userid == $row['email']) || ($userid == $row["userid"])){
 
-                    @csrf
+            $flag1 = TRUE;
 
-                    <div class="mb-3">
+            if($password == $row['password']){
 
-                        <label>Email</label>
+              $flag2 = TRUE;
 
-                        <input type="email"
-                               name="email"
-                               class="form-control">
+              setcookie("userid",$userid,time() + 60 * 60);
+              setcookie("password",$password,time() + 60 * 60);
 
-                    </div>
+              echo "<script>alert('Login Successfully'); window.location.href = 'index.php';</script>";
+          
+            }
+          }
+        }
+      }
+      else{
+        echo "<script>alert('Connection To Database Failed'); window.location.href = 'index.php';</script>";
+       
+      }
 
-                    <div class="mb-3">
+      if(!$flag1){
+        echo "<script>alert('User Not Found');</script>";
+        
+      }
+      if(!$flag2){
+        echo "<script>alert('Password Is Wrong');</script>";
+      }
 
-                        <label>Password</label>
+    }
+  }
+?>
 
-                        <input type="password"
-                               name="password"
-                               class="form-control">
+<!DOCTYPE html>
+<html lang="en">
 
-                    </div>
+  <head>
 
-                    <button class="btn btn-success w-100">
-                        Login
-                    </button>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="IMAGES/LOGIN.png"/>
+    <link rel="stylesheet" href="buttonstyle.css">
+    <link rel="stylesheet" href="formstyle.css">
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+    </style>
+  </head>
 
-                </form>
+  <body>
+  <div class="signupFrm">
+    <form action="login.php" method="POST" class="form" onsubmit="return validateForm()">
+      <h1 class="title">Login</h1>
 
-            </div>
+      <div class="inputContainer">
+        <input type="text" name="userinput" class="input" placeholder="a" required>
+        <label for="" class="label">Username Or Email</label>
+      </div>
 
-        </div>
+      <div class="inputContainer">
+        <input type="password" name="password" class="input" placeholder="a" required>
+        <label for="" class="label">Password</label>
+      </div>
 
-    </div>
+      <input type="submit" name="submit" class="submitBtn" value="Login">
+      <span id="error" class="error"></span>
+    </form>
+  </div>
 
-</div>
+  <div class="buttoncontainer">
+    <a href="index.php"class="button-30" role="button">Home</a>
+  </div>
+  <script>
+  function validateForm() {
+    var userinput = document.forms[0]["userinput"].value;
+    var password = document.forms[0]["password"].value;
+    var errorElement = document.getElementById("error");
 
-@endsection
+    if (userinput === "" || password === "") {
+      errorElement.innerText = "Please fill in all fields";
+      return false;
+    } else {
+      errorElement.innerText = ""; 
+      return true; 
+    }
+  }
+
+  </script>
+  </body>
+</html>
