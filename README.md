@@ -234,7 +234,8 @@ Current weather :
  ```text
  https://openweathermap.org/api
 ```
-image.png
+ <p><img src="image.png" alt="weather"></p>
+
 
 # Laravel Commands Used
 
