@@ -235,7 +235,7 @@ Current weather :
  https://openweathermap.org/api
 ```
  <p><img src="image.png" alt="weather"></p>
-
+<p><img src="https://imgs.search.brave.com/sRfoBEIK4p9wbfPRxMkEr_F5tSbTbAcp2Ne1YV4TgHo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjI0/NzQzMDUzMy9waG90/by9jeWNsb25lLW1v/bnRoYS0yMDI1MTAy/Ni1jbG91ZC1tYXAt/aW5kaWEtM2QtcmVu/ZGVyLWNvbG9yLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1P/OWZoWnRBQUVKYU9t/Q3JieXBoMndqSm0x/bGlqWGFQTUJDZU95/RW5OdC1JPQ" alt="weather"></p>
 
 # Laravel Commands Used
 
